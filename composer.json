@@ -1,0 +1,22 @@
+{
+    "name": "amezmo/drupal-integrations",
+    "description": "Add this project to any Drupal distribution based on drupal/core-composer-scaffold to enable it for use on Amezmo.",
+    "type": "project",
+    "license": "MIT",
+    "conflict": {
+      "drupal/core": "<9"
+    },
+    "extra": {
+      "drupal-scaffold": {
+        "file-mapping": {
+          "[web-root]/load.environment.php": "load.environment.php",
+          "[web-root]/sites/default/settings.amezmo.php": "assets/settings.amezmo.php",
+          "[web-root]/sites/default/settings.php": {
+            "mode": "replace",
+            "path": "assets/initial.settings.php",
+            "overwrite": false
+          }
+        }
+      }
+    }
+  }
