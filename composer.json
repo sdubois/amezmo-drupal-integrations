@@ -12,7 +12,7 @@
     "extra": {
       "drupal-scaffold": {
         "file-mapping": {
-          "[web-root]/load.environment.php": "load.environment.php",
+          "load.environment.php": "load.environment.php",
           "[web-root]/sites/default/settings.amezmo.php": "assets/settings.amezmo.php",
           "[web-root]/sites/default/settings.php": {
             "mode": "replace",
