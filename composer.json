@@ -9,6 +9,11 @@
     "conflict": {
       "drupal/core": "<9"
     },
+    "autoload": {
+      "files": [
+          "load.environment.php"
+      ]
+    },
     "extra": {
       "drupal-scaffold": {
         "file-mapping": {
