@@ -4,9 +4,9 @@
  * Amezmo settings.
  */
 
-use Symfony\Component\Dotenv\Dotenv;
-$dotenv = new Dotenv();
-$dotenv->load(__DIR__.'/.env');
+// use Symfony\Component\Dotenv\Dotenv;
+// $dotenv = new Dotenv();
+// $dotenv->load(__DIR__.'/.env');
 
 // Configure the database.
 if (isset($_ENV['APP_HOSTNAME'])) {
