@@ -4,7 +4,6 @@
     "type": "project",
     "license": "MIT",
     "require":{
-      "vlucas/phpdotenv": "^5.2",
       "symfony/dotenv": "^6.0"
     },
     "conflict": {
