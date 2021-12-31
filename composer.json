@@ -4,7 +4,7 @@
     "type": "project",
     "license": "MIT",
     "require":{
-      "symfony/dotenv": "^6.0"
+      "symfony/dotenv": "^5.0"
     },
     "conflict": {
       "drupal/core": "<9"
