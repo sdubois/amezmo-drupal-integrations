@@ -6,7 +6,7 @@
 
 use Symfony\Component\Dotenv\Dotenv;
 $dotenv = new Dotenv();
-$dotenv->loadEnv(__DIR__.'/.env');
+$dotenv->loadEnv( $_SERVER['DOCUMENT_ROOT'] .'/.env');
 
 // Configure the database.
 if (isset($_ENV['APP_HOSTNAME'])) {
