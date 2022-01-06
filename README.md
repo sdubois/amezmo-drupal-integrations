@@ -20,6 +20,11 @@ This project must be enabled in the top-level composer.json file, or it will be 
                 "sdubois/amezmo-drupal-integrations"
             ]
         }
+    },
+    "autoload": {
+        "files": [
+            "load.environment.php"
+        ]
     }
 }
 ```
