@@ -29,6 +29,14 @@ This project must be enabled in the top-level composer.json file, or it will be 
 }
 ```
 
+If installing this on a pre-existing Drupal site, you will likely need to update your settings.php file to load the settings.amezmo.php file with the following snippet:
+
+```
+if (file_exists($app_root . '/' . $site_path . '/settings.amezmo.php')) {
+  include $app_root . '/' . $site_path . '/settings.amezmo.php';
+}
+```
+
 ## Credit
 
 This repository is based on the pantheon-systems/drupal-integrations project. Thanks to everyone involved!
