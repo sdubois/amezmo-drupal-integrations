@@ -23,7 +23,7 @@ if (isset($_ENV['APP_HOSTNAME'])) {
   $settings['php_storage']['default']['directory'] = $settings['file_private_path'];
   $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
 
-  $settings['file_chmod_directory'] = 2775;
+  $settings['file_chmod_directory'] = 02775;
   $settings['file_chmod_file'] = 0664;
 
   // Set the project-specific entropy value, used for generating one-time
