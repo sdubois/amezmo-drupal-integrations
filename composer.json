@@ -19,7 +19,11 @@
         "file-mapping": {
           "load.environment.php": "assets/load.environment.php",
           ".amezmo/after.pull": "assets/.amezmo/after.pull",
-          "[web-root]/sites/default/settings.amezmo.php": "assets/settings.amezmo.php",
+          "[web-root]/sites/default/settings.amezmo.php": {
+            "mode": "replace",
+            "path": "assets/settings.amezmo.php",
+            "overwrite": false
+          },
           "[web-root]/sites/default/settings.php": {
             "mode": "replace",
             "path": "assets/initial.settings.php",
