@@ -1,4 +1,7 @@
+
 # amezmo-drupal-integrations
+
+`amezmo-drupal-integrations` brings in everything needed to use an existing Drupal site on [Amezmo](https://www.amezmo.com)
 
 Add this project to any Drupal distribution based on drupal/core-composer-scaffold to enable it for use on Amezmo.
 
