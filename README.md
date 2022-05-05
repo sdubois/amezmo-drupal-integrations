@@ -11,7 +11,7 @@ This project must be enabled in the top-level composer.json file, or it will be 
 {
     ...
     "require": {
-        "sdubois/amezmo-drupal-integrations": "^9"
+        "sdubois/amezmo-drupal-integrations": "dev-main"
     },
     ...
     "extra": {
@@ -37,10 +37,12 @@ if (file_exists($app_root . '/' . $site_path . '/settings.amezmo.php')) {
 }
 ```
 
+## File storage
+
+Amezmo stores static files (images, documents, etc) in the `/webroot/storage` directory. In order to use this directory with Drupal, this package creates a symlink to this directory from the Drupal public files directory on each deployment. 
+
+You can use SCP or SFTP to copy files to this directory.
+
 ## Credit
 
 This repository is based on the pantheon-systems/drupal-integrations project. Thanks to everyone involved!
-
-## Versions
-
-Use version "^8" for Drupal 8, and version "^9" for Drupal 9.
