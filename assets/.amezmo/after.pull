@@ -11,12 +11,11 @@ set -e;
 echo "Running this hook from ${APPLICATION_ROOT}";
 
 # Determine the web root as known to the Drupal scaffold plugin.
-WEB_ROOT=$(composer --working-dir $APPLICATION_ROOT config extra.drupal-scaffold.locations.web-root)
+WEB_ROOT=$(composer config extra.drupal-scaffold.locations.web-root --working-dir="$APPLICATION_ROOT")
 WEB_ROOT=${WEB_ROOT%/}
 
 # STORAGE_DIRECTORY is provided by default in hooks
 DEPLOYMENT_STORAGE_DIRECTORY="${APPLICATION_ROOT}/${WEB_ROOT}/sites/default/files";
-
 # NOTE /webroot/storage is for production, see Git tab under Staging in the site dashboard for
 # the persistant storage path for staging
 
