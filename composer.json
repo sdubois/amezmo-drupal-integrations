@@ -7,7 +7,7 @@
       "vlucas/phpdotenv": "^5.2"
     },
     "conflict": {
-      "drupal/core": "<9"
+      "drupal/core": "<10"
     },
     "autoload": {
       "files": [
