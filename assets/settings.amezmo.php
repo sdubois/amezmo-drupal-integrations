@@ -27,7 +27,7 @@ if (isset($_ENV['APP_HOSTNAME'])) {
   $settings['php_storage']['default']['directory'] = $settings['file_private_path'];
   $settings['php_storage']['twig']['directory'] = $settings['file_private_path'];
 
-  $settings['file_chmod_directory'] = 2775;
+  $settings['file_chmod_directory'] = 02775;
   $settings['file_chmod_file'] = 0664;
 
   // Set the project-specific entropy value, used for generating one-time
@@ -88,4 +88,21 @@ if (!empty($_ENV['REDIS_HOST'])) {
       ],
     ];
   }
+}
+
+// Add Solr connection settings.
+if (!empty($_ENV['SOLR_HOST'])) {
+  $config['search_api.server.solr_server'] = [
+    'backend_config' => [
+      'connector_config' => [
+        'host' => $_ENV['SOLR_HOST'],
+        'port' => $_ENV['SOLR_PORT'] ?? 8983,
+        'path' => $_ENV['SOLR_PATH'] ?? '/solr',
+        'core' => $_ENV['SOLR_CORE'] ?? 'drupal',
+        'username' => $_ENV['SOLR_USER'] ?? '',
+        'password' => $_ENV['SOLR_PASSWORD'] ?? '',
+        'scheme' => $_ENV['SOLR_SCHEME'] ?? 'http',
+      ],
+    ],
+  ];
 }
