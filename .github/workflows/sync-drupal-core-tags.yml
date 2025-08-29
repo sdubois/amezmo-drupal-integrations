@@ -23,13 +23,16 @@ jobs:
       - name: Compare tags
         id: compare
         run: |
-          git tag > /tmp/local-tags.txt
-          # Get the latest tag from drupal/core and local, sorted by version
-          LATEST_DRUPAL_TAG=$(sort -V /tmp/drupal-tags.txt | tail -n 1)
-          LATEST_LOCAL_TAG=$(sort -V /tmp/local-tags.txt | tail -n 1)
+          MAX_MAJOR_VERSION=10
 
-          # Only create a new tag if the drupal/core tag is newer
-          if [ "$LATEST_DRUPAL_TAG" != "$LATEST_LOCAL_TAG" ]; then
+          # Filter tags to only those matching the desired major version
+          grep -E "^${MAX_MAJOR_VERSION}\.[0-9]+\.[0-9]+$" /tmp/drupal-tags.txt | sort -V > /tmp/drupal-tags-major.txt
+          git tag | grep -E "^${MAX_MAJOR_VERSION}\.[0-9]+\.[0-9]+$" | sort -V > /tmp/local-tags-major.txt
+
+          LATEST_DRUPAL_TAG=$(tail -n 1 /tmp/drupal-tags-major.txt)
+          LATEST_LOCAL_TAG=$(tail -n 1 /tmp/local-tags-major.txt)
+
+          if [ "$LATEST_DRUPAL_TAG" != "" ] && [ "$LATEST_DRUPAL_TAG" != "$LATEST_LOCAL_TAG" ]; then
             echo "new_tag=$LATEST_DRUPAL_TAG" >> $GITHUB_OUTPUT
           fi
 
