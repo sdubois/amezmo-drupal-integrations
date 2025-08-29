@@ -1,0 +1,39 @@
+name: Sync Drupal Core Tags
+
+on:
+  schedule:
+    - cron: "0 * * * *" # run hourly
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  sync-tags:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # needed for tag operations
+
+      - name: Fetch drupal/core tags
+        run: |
+          git clone --quiet --bare https://github.com/drupal/core.git drupal-core.git
+          cd drupal-core.git
+          git tag > /tmp/drupal-tags.txt
+
+      - name: Compare tags
+        id: compare
+        run: |
+          git tag > /tmp/local-tags.txt
+          NEW_TAG=$(comm -23 <(sort /tmp/drupal-tags.txt) <(sort /tmp/local-tags.txt) | tail -n 1 || true)
+
+          if [ -n "$NEW_TAG" ]; then
+            echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create new tag in this repo
+        if: steps.compare.outputs.new_tag != ''
+        run: |
+          TAG=${{ steps.compare.outputs.new_tag }}
+          echo "Creating new tag: $TAG"
+          git tag $TAG
+          git push origin $TAG
