@@ -85,3 +85,20 @@ if (!empty($_ENV['REDIS_HOST'])) {
     ];
   }
 }
+
+// Add Solr connection settings.
+if (!empty($_ENV['SOLR_HOST'])) {
+  $config['search_api.server.solr_server'] = [
+    'backend_config' => [
+      'connector_config' => [
+        'host' => $_ENV['SOLR_HOST'],
+        'port' => $_ENV['SOLR_PORT'] ?? 8983,
+        'path' => $_ENV['SOLR_PATH'] ?? '/solr',
+        'core' => $_ENV['SOLR_CORE'] ?? 'drupal',
+        'username' => $_ENV['SOLR_USER'] ?? '',
+        'password' => $_ENV['SOLR_PASSWORD'] ?? '',
+        'scheme' => $_ENV['SOLR_SCHEME'] ?? 'http',
+      ],
+    ],
+  ];
+}
