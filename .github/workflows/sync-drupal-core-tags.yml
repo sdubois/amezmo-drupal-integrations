@@ -24,7 +24,7 @@ jobs:
         id: compare
         run: |
           git tag > /tmp/local-tags.txt
-          NEW_TAG=$(comm -23 <(sort /tmp/drupal-tags.txt) <(sort /tmp/local-tags.txt) | tail -n 1 || true)
+          NEW_TAG=$(comm -23 <(sort /tmp/drupal-tags.txt) <(sort /tmp/local-tags.txt) | sort -V | tail -n 1 || true)
 
           if [ -n "$NEW_TAG" ]; then
             echo "new_tag=$NEW_TAG" >> $GITHUB_OUTPUT
