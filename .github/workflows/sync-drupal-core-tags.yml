@@ -2,7 +2,7 @@ name: Sync Drupal Core Tags
 
 on:
   schedule:
-    - cron: "0 * * * *" # run hourly
+    - cron: "0 0 * * *" # run daily at midnight UTC
   workflow_dispatch: # allow manual trigger
 
 jobs:
