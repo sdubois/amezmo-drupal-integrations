@@ -7,11 +7,18 @@
 
 use Dotenv\Dotenv;
 use Dotenv\Exception\InvalidPathException;
+use Dotenv\Repository\RepositoryBuilder;
+use Dotenv\Repository\Adapter\PutenvAdapter;
 
 /**
  * Load any .env file. See /.env.example.
  */
-$dotenv = Dotenv::createImmutable(__DIR__);
+$repository = RepositoryBuilder::createWithDefaultAdapters()
+  ->addAdapter(PutenvAdapter::class)
+  ->immutable()
+  ->make();
+
+$dotenv = Dotenv::create($repository, __DIR__);
 try {
   $dotenv->load();
 }
